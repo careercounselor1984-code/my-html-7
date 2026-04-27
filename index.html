@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>학교·대학·유관기관용 국민취업지원제도 안내</title>
+  
+  <style>
+    :root{
+      --bg:#eff4fb;
+      --bg-2:#f8fbff;
+      --card:#ffffff;
+      --card-soft:#f8fbff;
+      --line:#d8e3f2;
+      --line-strong:#c7d7ee;
+      --text:#1f2937;
+      --muted:#667085;
+      --muted-2:#72809a;
+      --blue:#2f6fed;
+      --blue-dark:#1848b9;
+      --blue-soft:#eef4ff;
+      --green:#0f9d77;
+      --green-soft:#eafaf5;
+      --orange:#f59e0b;
+      --orange-soft:#fff6e4;
+      --purple:#7c3aed;
+      --purple-soft:#f4ecff;
+      --red:#e11d48;
+      --red-soft:#fff1f4;
+      --navy:#102a56;
+      --shadow:0 18px 40px rgba(21,34,56,.08);
+      --shadow-soft:0 10px 24px rgba(21,34,56,.06);
+      --sidebar:320px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(79,135,255,.08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(15,157,119,.06), transparent 24%),
+        linear-gradient(180deg,#f8fbff 0%,#f0f5fb 100%);
+      color:var(--text);
+      overflow:hidden;
+      letter-spacing:-0.01em;
+    }
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    strong{color:#16233b}
+    .app{height:100vh;display:grid;grid-template-columns:var(--sidebar) 1fr}
+    .sidebar{
+      border-right:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff 0%,#f6faff 100%);
+      padding:18px 16px 16px;
+      display:flex;flex-direction:column;gap:16px;min-height:0;
+      box-shadow:4px 0 20px rgba(18,43,80,.04)
+    }
+    .brand{
+      position:relative;overflow:hidden;
+      padding:22px 18px;border-radius:28px;
+      background:linear-gradient(135deg,#1948b6 0%,#4480ff 100%);
+      color:#fff;box-shadow:var(--shadow)
+    }
+    .brand:before,.brand:after{
+      content:"";position:absolute;border-radius:999px;background:rgba(255,255,255,.10)
+    }
+    .brand:before{width:210px;height:210px;right:-70px;top:-90px}
+    .brand:after{width:140px;height:140px;left:-50px;bottom:-45px}
+    .eyebrow{
+      position:relative;z-index:1;
+      display:inline-flex;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.16);
+      font-size:12px;font-weight:800;margin-bottom:12px;backdrop-filter:blur(4px)
+    }
+    .brand h1{
+      position:relative;z-index:1;
+      margin:0;font-size:25px;line-height:1.24;letter-spacing:-.04em
+    }
+    .brand p{
+      position:relative;z-index:1;
+      margin:12px 0 0;font-size:13px;line-height:1.78;color:rgba(255,255,255,.94)
+    }
+    .nav-title{
+      font-size:12px;color:#7b8797;font-weight:900;padding:0 8px;letter-spacing:.06em
+    }
+    .nav{display:grid;gap:8px;overflow:auto;padding-right:4px}
+    .nav-btn{
+      width:100%;border:1px solid transparent;background:#fff;border-radius:18px;
+      padding:13px 14px;display:flex;gap:12px;text-align:left;cursor:pointer;
+      transition:.18s ease;color:var(--text);box-shadow:0 2px 8px rgba(26,54,93,.03)
+    }
+    .nav-btn:hover{
+      border-color:#d8e4ff;background:#f8fbff;transform:translateY(-1px);
+      box-shadow:var(--shadow-soft)
+    }
+    .nav-btn.active{
+      background:linear-gradient(180deg,#f3f8ff 0%,#edf4ff 100%);
+      border-color:#cfe0ff;color:var(--blue-dark);box-shadow:var(--shadow-soft)
+    }
+    .nav-num{
+      flex:0 0 36px;width:36px;height:36px;border-radius:13px;background:#eef3fb;
+      display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#516178
+    }
+    .nav-btn.active .nav-num{
+      background:linear-gradient(180deg,#dbe8ff,#d3e3ff);color:var(--blue-dark)
+    }
+    .nav-text strong{display:block;font-size:14px;line-height:1.45;margin-bottom:2px}
+    .nav-text span{display:block;font-size:12px;color:#6d7c90;line-height:1.55}
+    .side-note{
+      margin-top:auto;padding:15px;border-radius:20px;border:1px solid var(--line);
+      background:linear-gradient(180deg,#ffffff 0%,#f7fbff 100%);
+      font-size:12px;color:#617185;line-height:1.78
+    }
+
+    .main{min-width:0;display:grid;grid-template-rows:auto 1fr;min-height:0}
+    .topbar{
+      position:sticky;top:0;z-index:20;
+      background:rgba(255,255,255,.88);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+      padding:14px 24px;display:flex;justify-content:space-between;gap:12px;align-items:center
+    }
+    .topbar-left{display:flex;align-items:center;gap:12px;min-width:0}
+    .menu-toggle{
+      display:none;width:42px;height:42px;border-radius:14px;border:1px solid var(--line);
+      background:#fff;cursor:pointer;box-shadow:var(--shadow-soft)
+    }
+    .page-title{min-width:0}
+    .page-title strong{
+      display:block;font-size:18px;line-height:1.34;letter-spacing:-.02em;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+    }
+    .page-title span{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+    .top-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{
+      display:inline-flex;padding:10px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);
+      font-size:13px;font-weight:700;color:#475467;box-shadow:0 2px 8px rgba(26,54,93,.03)
+    }
+
+    .content{overflow:auto;padding:28px 28px 42px}
+    .panel{display:none;animation:fade .18s ease;max-width:1320px;margin:0 auto}
+    .panel.active{display:block}
+    @keyframes fade{from{opacity:.18;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    .hero{
+      position:relative;overflow:hidden;border-radius:32px;padding:30px;
+      background:linear-gradient(135deg,#1c4dbd 0%,#3f7cff 58%,#79adff 100%);
+      color:#fff;box-shadow:var(--shadow)
+    }
+    .hero:before,.hero:after{
+      content:"";position:absolute;border-radius:999px;background:rgba(255,255,255,.10)
+    }
+    .hero:before{width:320px;height:320px;top:-110px;right:-90px}
+    .hero:after{width:200px;height:200px;left:-50px;bottom:-75px}
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:center}
+    .hero h2{margin:0;font-size:40px;line-height:1.16;letter-spacing:-.05em}
+    .hero p{margin:14px 0 0;max-width:760px;font-size:16px;line-height:1.88;color:rgba(255,255,255,.95)}
+    .hero-box{
+      background:rgba(255,255,255,.13);
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:26px;padding:20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.1)
+    }
+    .hero-box h3{margin:0 0 12px;font-size:18px;line-height:1.45}
+    .hero-box ul{margin:0;padding-left:18px;font-size:14px;line-height:1.8;color:rgba(255,255,255,.94)}
+
+    .grid4,.grid3,.grid2{display:grid;gap:16px}
+    .grid4{grid-template-columns:repeat(4,1fr);margin-top:18px}
+    .grid3{grid-template-columns:repeat(3,1fr)}
+    .grid2{grid-template-columns:repeat(2,1fr)}
+
+    .card{
+      background:linear-gradient(180deg,#fff 0%,#fcfdff 100%);
+      border:1px solid var(--line);border-radius:24px;padding:18px;
+      box-shadow:var(--shadow-soft);position:relative;overflow:hidden
+    }
+    .card:before{
+      content:"";position:absolute;left:18px;right:18px;top:0;height:4px;border-radius:999px;
+      background:linear-gradient(90deg,var(--blue),#79adff)
+    }
+    .card .k{font-size:13px;color:var(--muted);font-weight:700}
+    .card .v{margin-top:10px;font-size:22px;font-weight:900;line-height:1.34;letter-spacing:-.03em}
+    .card .d{margin-top:8px;font-size:14px;color:#5e697c;line-height:1.78}
+
+    .section{
+      margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:30px;overflow:hidden;
+      box-shadow:var(--shadow)
+    }
+    .section-head{
+      padding:26px 26px 12px;
+      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start;
+      background:linear-gradient(180deg,#fcfeff 0%,#f8fbff 100%);
+      border-bottom:1px solid rgba(216,227,242,.65)
+    }
+    .section-head h3{margin:0;font-size:29px;line-height:1.2;letter-spacing:-.04em}
+    .section-head p{margin:8px 0 0;font-size:14px;color:var(--muted);line-height:1.72;max-width:850px}
+    .tag{
+      display:inline-flex;padding:8px 12px;border-radius:999px;background:#ffffff;border:1px solid var(--line);
+      font-size:12px;font-weight:800;color:#53637a;box-shadow:0 2px 8px rgba(26,54,93,.03)
+    }
+    .section-body{padding:0 26px 26px}
+    .lead{font-size:16px;line-height:1.95;color:#2c3648;margin:8px 0 0}
+
+    .mini-card,
+    .benefit,
+    .support-card,
+    .req-card,
+    .plan,
+    .soft-box,
+    .script{
+      border:1px solid var(--line);border-radius:22px;padding:18px;
+      background:linear-gradient(180deg,#fff 0%,#fcfdff 100%);box-shadow:var(--shadow-soft)
+    }
+    .mini-card h4,
+    .benefit h4,
+    .support-card h4,
+    .req-card h4,
+    .plan h4,
+    .soft-box h4,
+    .script h4{
+      margin:0 0 8px;font-size:18px;line-height:1.45;letter-spacing:-.02em
+    }
+    .mini-card p,
+    .benefit p,
+    .support-card p,
+    .req-card p,
+    .soft-box p,
+    .script p{
+      margin:0;font-size:14px;color:#596579;line-height:1.86
+    }
+
+    .badge,
+    .support-tag{
+      display:inline-flex;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900;margin-bottom:10px
+    }
+    .b-blue{background:var(--blue-soft);color:var(--blue-dark)}
+    .b-green{background:var(--green-soft);color:#0e7d60}
+    .b-orange{background:var(--orange-soft);color:#a56600}
+    .b-purple{background:var(--purple-soft);color:#6631d1}
+    .b-red{background:var(--red-soft);color:var(--red)}
+
+    .callout{
+      margin-top:18px;padding:20px 22px;border-radius:22px;border:1px solid #d7e5ff;
+      background:linear-gradient(135deg,#eef4ff,#fafcff);box-shadow:var(--shadow-soft)
+    }
+    .callout h4{margin:0 0 8px;font-size:18px;line-height:1.45}
+    .callout p{margin:0;font-size:14px;color:#4a5d79;line-height:1.92}
+
+    .benefit-list{display:grid;gap:14px;margin-top:16px}
+    .timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:16px}
+    .step{
+      position:relative;min-height:196px;border:1px solid var(--line);border-radius:22px;padding:18px;
+      background:linear-gradient(180deg,#ffffff 0%,#fbfdff 100%);box-shadow:var(--shadow-soft)
+    }
+    .step strong{display:block;font-size:15px;line-height:1.58;letter-spacing:-.01em}
+    .time{
+      display:inline-flex;margin-top:10px;padding:7px 11px;border-radius:999px;background:var(--blue-soft);
+      color:var(--blue-dark);font-size:12px;font-weight:900
+    }
+    .step p{margin:10px 0 0;font-size:13px;color:#5e6a7b;line-height:1.74}
+    .step:not(:last-child):after{
+      content:"→";position:absolute;right:-9px;top:18px;color:#8ba0c2;font-size:18px;font-weight:900
+    }
+
+    .table-wrap{margin-top:16px;overflow:auto}
+    table{
+      width:100%;border-collapse:separate;border-spacing:0;
+      border:1px solid var(--line-strong);border-radius:22px;overflow:hidden;font-size:14px;background:#fff;
+      box-shadow:var(--shadow-soft)
+    }
+    th,td{padding:15px 15px;vertical-align:top;border-bottom:1px solid var(--line);line-height:1.78}
+    th{
+      background:linear-gradient(180deg,#f7fbff 0%,#f1f7ff 100%);
+      text-align:left;font-size:13px;color:#40516d;font-weight:900;white-space:nowrap
+    }
+    tbody tr:nth-child(even) td{background:#fbfcfe}
+    tbody tr:hover td{background:#f7fbff}
+    td strong{font-weight:900}
+    tr:last-child td{border-bottom:none}
+
+    .quote{
+      margin-top:12px;padding:15px 16px;border-radius:18px;background:#f8fbff;border:1px solid var(--line);
+      font-size:14px;line-height:1.9;color:#344054
+    }
+
+    .plan-grid{display:grid;gap:14px;margin-top:16px}
+    .plan-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+    .plan ul{margin:10px 0 0;padding-left:18px;font-size:14px;color:#596579;line-height:1.84}
+
+    .support-summary,
+    .req-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+
+    .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+    .metric-card{
+      background:linear-gradient(180deg,#fff 0%,#fbfdff 100%);
+      border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow-soft)
+    }
+    .metric-card .top{
+      display:inline-flex;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900;margin-bottom:10px;
+      background:var(--blue-soft);color:var(--blue-dark)
+    }
+    .metric-card:nth-child(2) .top{background:var(--green-soft);color:#0e7d60}
+    .metric-card:nth-child(3) .top{background:var(--orange-soft);color:#a56600}
+    .metric-card h4{margin:0 0 8px;font-size:18px;line-height:1.45}
+    .metric-card p{margin:0;font-size:14px;color:#596579;line-height:1.84}
+
+    .criteria-note{
+      margin-top:14px;padding:14px 16px;border-radius:18px;
+      background:#f8fbff;border:1px dashed var(--line-strong);font-size:13px;color:#55657f;line-height:1.82
+    }
+
+    details{
+      border:1px solid var(--line);border-radius:20px;background:#fff;overflow:hidden;box-shadow:var(--shadow-soft)
+    }
+    details+details{margin-top:12px}
+    summary{
+      cursor:pointer;list-style:none;padding:17px 18px;font-size:16px;font-weight:900;display:flex;align-items:center;justify-content:space-between
+    }
+    summary::-webkit-details-marker{display:none}
+    details[open] summary{border-bottom:1px solid var(--line)}
+    .detail-body{padding:16px 18px 18px;font-size:14px;color:#596579;line-height:1.88}
+
+    .contact{
+      display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:16px
+    }
+    .contact-hero{
+      position:relative;overflow:hidden;
+      border-radius:26px;padding:26px;background:linear-gradient(135deg,#103ea8,#2f6fed);color:#fff;box-shadow:var(--shadow)
+    }
+    .contact-hero:before{
+      content:"";position:absolute;width:180px;height:180px;border-radius:999px;background:rgba(255,255,255,.10);right:-50px;top:-60px
+    }
+    .contact-hero h4{position:relative;z-index:1;margin:0 0 8px;font-size:27px;line-height:1.26}
+    .contact-hero p{position:relative;z-index:1;margin:0;font-size:15px;line-height:1.88;color:rgba(255,255,255,.94)}
+    .contact-info{
+      border:1px solid var(--line);border-radius:26px;background:linear-gradient(180deg,#fff 0%,#fcfdff 100%);padding:22px;box-shadow:var(--shadow-soft)
+    }
+    .contact-info dl{margin:0;display:grid;gap:12px}
+    .contact-info dt{font-size:12px;font-weight:900;color:#7c8798}
+    .contact-info dd{margin:4px 0 0;font-size:16px;font-weight:900;line-height:1.5}
+
+    .footer-note{margin-top:16px;font-size:12px;color:#748093;line-height:1.8}
+
+    @media (max-width:1240px){
+      .grid4,.grid3,.timeline,.metric-row,.support-summary,.req-grid{grid-template-columns:repeat(2,1fr)}
+      .step:not(:last-child):after{display:none}
+      .hero-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:940px){
+      body{overflow:auto}
+      .app{grid-template-columns:1fr;height:auto;min-height:100vh}
+      .sidebar{
+        position:fixed;inset:0 auto 0 0;width:min(88vw,340px);z-index:50;
+        transform:translateX(-100%);transition:.22s ease;box-shadow:var(--shadow)
+      }
+      .sidebar.open{transform:translateX(0)}
+      .backdrop{
+        position:fixed;inset:0;background:rgba(15,23,42,.35);
+        opacity:0;pointer-events:none;transition:.2s ease;z-index:40
+      }
+      .backdrop.show{opacity:1;pointer-events:auto}
+      .main{min-height:100vh}
+      .menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+      .content{padding:18px}
+      .topbar{padding:12px 16px}
+      .hero{padding:22px}
+      .hero h2{font-size:31px}
+      .grid2,.grid3,.contact{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .grid4,.grid3,.timeline,.support-summary,.req-grid,.metric-row{grid-template-columns:1fr}
+      .section-head,.section-body{padding-left:18px;padding-right:18px}
+      .section-head{padding-top:20px}
+      .section-body{padding-bottom:20px}
+      .section-head h3{font-size:24px}
+      .page-title strong{font-size:16px}
+      .top-actions{display:none}
+      th,td{padding:13px 12px}
+    }
+  </style>
+
+</head>
+<body>
+  <div class="backdrop" id="backdrop"></div>
+
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="eyebrow">학교 · 대학 · 유관기관 안내용</div>
+        <h1>학생이 꼭 하게끔<br>이해시키는<br>국민취업지원제도 안내</h1>
+        <p>학교가 이 제도를 소개할 때 가장 중요한 것은 “정책 설명”보다 “학생이 실제로 무엇을 얻는가”를 분명하게 보여주는 것입니다.</p>
+      </div>
+
+      <div class="nav-title">MENU</div>
+      <div class="nav">
+        <button class="nav-btn active" data-target="home">
+          <div class="nav-num">홈</div>
+          <div class="nav-text">
+            <strong>첫 화면 요약</strong>
+            <span>학교가 바로 이해해야 할 핵심</span>
+          </div>
+        </button>
+        <button class="nav-btn" data-target="student">
+          <div class="nav-num">1</div>
+          <div class="nav-text">
+            <strong>학생이 얻는 것</strong>
+            <span>취업, 준비, 지원금, 경험</span>
+          </div>
+        </button>
+        <button class="nav-btn" data-target="timing">
+          <div class="nav-num">2</div>
+          <div class="nav-text">
+            <strong>언제 연계하면 좋은가</strong>
+            <span>고등학교 · 대학 졸업예정자 기준</span>
+          </div>
+        </button>
+        <button class="nav-btn" data-target="requirements">
+          <div class="nav-num">3</div>
+          <div class="nav-text">
+            <strong>신청 관련 요건</strong>
+            <span>누가 신청 가능하고 뭐가 필요한지</span>
+          </div>
+        </button>
+        <button class="nav-btn" data-target="process">
+          <div class="nav-num">4</div>
+          <div class="nav-text">
+            <strong>진행 흐름과 기간</strong>
+            <span>신청부터 사후관리까지</span>
+          </div>
+        </button>
+        <button class="nav-btn" data-target="supporttypes">
+          <div class="nav-num">5</div>
+          <div class="nav-text">
+            <strong>1유형 · 2유형 지원금</strong>
+            <span>유형별 지원금을 따로 보기</span>
+          </div>
+        </button>
+        <button class="nav-btn" data-target="goodjob">
+          <div class="nav-num">6</div>
+          <div class="nav-text">
+            <strong>좋은일자리 강점</strong>
+            <span>AI 상담 · 컨설팅 · 훈련연계</span>
+          </div>
+        </button>
+        <button class="nav-btn" data-target="company">
+          <div class="nav-num">7</div>
+          <div class="nav-text">
+            <strong>기업이 받는 이점</strong>
+            <span>장려금 · 채용 설득 포인트</span>
+          </div>
+        </button>
+        <button class="nav-btn" data-target="school">
+          <div class="nav-num">8</div>
+          <div class="nav-text">
+            <strong>학교가 얻는 장점</strong>
+            <span>취업성과 · 미취업자 후속지원</span>
+          </div>
+        </button>
+        <button class="nav-btn" data-target="contact">
+          <div class="nav-num">9</div>
+          <div class="nav-text">
+            <strong>문의 안내</strong>
+            <span>기관명 · 연락처 · 채널 · QR</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="side-note">
+        이 버전은 학교·대학교·훈련기관이 학생에게 “왜 지금 국민취업지원제도를 해야 하는지” 설명하기 쉽게 다시 설계한 버전입니다.
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle" aria-label="메뉴 열기">☰</button>
+          <div class="page-title">
+            <strong id="currentTitle">첫 화면 요약</strong>
+            <span id="currentSub">학생 유입과 기관 이해를 동시에 높이기 위한 구조입니다.</span>
+          </div>
+        </div>
+        <div class="top-actions">
+          <div class="chip">학생 중심 구조</div>
+          <div class="chip">취업 강점 강조</div>
+          <div class="chip">지원금 · 신청요건 포함</div>
+        </div>
+      </header>
+
+      <section class="content">
+        <div class="panel active" id="panel-home" data-title="첫 화면 요약" data-sub="학생 유입과 기관 이해를 동시에 높이기 위한 구조입니다.">
+          <div class="hero">
+            <div class="hero-grid">
+              <div>
+                <h2>학생이 국취에 참여하면<br>“상담만 받는 것”이 아니라<br>취업 준비가 실제로 빨라집니다.</h2>
+                <p>
+                  학교와 대학이 이 제도를 학생에게 권해야 하는 이유는 분명합니다.
+                  진로가 막막한 학생은 방향을 잡고,
+                  취업 준비가 느린 학생은 서류·면접 지원을 받고,
+                  경험이 부족한 학생은 훈련·일경험으로 연결되며,
+                  경우에 따라 수당과 취업 후 인센티브까지 받을 수 있기 때문입니다.
+                </p>
+              </div>
+              <div class="hero-visual">
+                <div class="mini-tiles">
+                  <div class="mini-tile">
+                    <div class="icon">🎓</div>
+                    <strong>진로 방향 정리</strong>
+                    <span>직업심리검사, 잡케어, AI 진로상담</span>
+                  </div>
+                  <div class="mini-tile">
+                    <div class="icon">📝</div>
+                    <strong>서류·면접 보완</strong>
+                    <span>자소서, 면접, AI면접, 1:1 컨설팅</span>
+                  </div>
+                  <div class="mini-tile">
+                    <div class="icon">💼</div>
+                    <strong>취업 연결 강화</strong>
+                    <span>훈련, 일경험, 채용정보, 취업알선</span>
+                  </div>
+                  <div class="mini-tile">
+                    <div class="icon">💰</div>
+                    <strong>지원금 체감</strong>
+                    <span>구직촉진수당, 참여수당, 취업성공수당</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid4">
+            <div class="quick">
+              <div class="k">학생 입장 핵심</div>
+              <div class="v">취업 준비 속도가 빨라집니다</div>
+              <div class="d">혼자 준비하던 학생도 전담상담사와 함께 준비 순서와 목표를 정리할 수 있습니다.</div>
+            </div>
+            <div class="quick">
+              <div class="k">학교 입장 핵심</div>
+              <div class="v">미취업자 후속지원을 맡길 수 있습니다</div>
+              <div class="d">졸업·수료 이후 직접 관리가 어려운 학생을 외부 취업지원체계와 연결할 수 있습니다.</div>
+            </div>
+            <div class="quick">
+              <div class="k">기업 연계 핵심</div>
+              <div class="v">채용기업에도 이점이 있습니다</div>
+              <div class="d">고용촉진장려금, 청년일자리도약장려금 등 채용설득에 활용할 수 있는 포인트가 있습니다.</div>
+            </div>
+            <div class="quick">
+              <div class="k">학생 설득 핵심</div>
+              <div class="v">돈 + 준비 + 연결을 함께 설명해야 합니다</div>
+              <div class="d">수당만이 아니라 서류·면접·훈련·일경험·취업연계까지 같이 설명할 때 참여 의지가 높아집니다.</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h3>학교가 학생에게 이렇게 설명하면 이해가 쉽습니다</h3>
+                <p>정책 문장이 아니라 실제 학생이 받아들이는 언어로 바꾼 버전</p>
+              </div>
+              <div class="tag">권장 설명문</div>
+            </div>
+            <div class="section-body">
+              <div class="grid3">
+                <div class="mini-card">
+                  <span class="badge b-blue">진로가 막막한 학생</span>
+                  <h4>“무슨 일을 준비해야 할지부터 정리해줍니다”</h4>
+                  <p>잡케어와 상담으로 지금 지원할 수 있는 직무, 더 준비하면 도전할 수 있는 직무를 구분할 수 있습니다.</p>
+                </div>
+                <div class="mini-card">
+                  <span class="badge b-green">준비가 느린 학생</span>
+                  <h4>“이력서·면접 준비를 실제로 도와줍니다”</h4>
+                  <p>자기소개서, 면접, 구직기술 프로그램, AI면접까지 연결해 준비 속도를 높일 수 있습니다.</p>
+                </div>
+                <div class="mini-card">
+                  <span class="badge b-orange">취업경험이 부족한 학생</span>
+                  <h4>“훈련과 일경험까지 연결할 수 있습니다”</h4>
+                  <p>국민내일배움카드, 미래내일일경험 등과 연계해 스펙이 아니라 실제 경험을 만들 수 있습니다.</p>
+                </div>
+              </div>
+
+              <div class="callout">
+                <h4>학교용 한 줄 정리</h4>
+                <p>
+                  국민취업지원제도는 <strong>취업이 늦어지는 학생에게 상담, 준비, 훈련, 일경험, 취업연계, 지원금까지 한 번에 연결할 수 있는 제도</strong>라고 설명하는 것이 가장 이해가 쉽습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-student" data-title="학생이 얻는 것" data-sub="학생이 체감할 수 있는 취업 강점과 지원금 중심으로 정리했습니다.">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h3>학생이 국민취업지원제도에서 실제로 얻는 것</h3>
+                <p>학교가 학생에게 안내할 때 가장 먼저 보여줘야 하는 부분</p>
+              </div>
+              <div class="tag">학생 체감혜택</div>
+            </div>
+            <div class="section-body">
+              <div class="benefit-list">
+                <div class="benefit">
+                  <h4>1. 취업 방향이 구체적으로 정리됩니다</h4>
+                  <p>1:1 상담, 취업역량평가, 직업심리검사, 잡케어를 통해 “어떤 직무를 준비할지”, “어떤 훈련이 필요한지”, “어디에 먼저 지원할지”를 정리할 수 있습니다.</p>
+                </div>
+                <div class="benefit">
+                  <h4>2. 자기소개서와 면접 준비가 현실적으로 빨라집니다</h4>
+                  <p>이력서·자소서 클리닉, 면접컨설팅, AI면접, 동행면접, 구직기술 향상 프로그램으로 단순 정보 제공이 아니라 실제 지원 준비를 돕습니다.</p>
+                </div>
+                <div class="benefit">
+                  <h4>3. 훈련과 경험을 통해 스펙을 보완할 수 있습니다</h4>
+                  <p>국민내일배움카드, 직업훈련, 미래내일일경험 등과 연결되면 “준비는 했는데 경험이 없다”는 약점을 보완하기 좋습니다.</p>
+                </div>
+                <div class="benefit">
+                  <h4>4. 경우에 따라 지원금도 받을 수 있습니다</h4>
+                  <p>Ⅰ유형은 구직촉진수당, Ⅱ유형은 취업활동계획 수립 참여수당·참여장려수당, 공통으로는 취업성공수당까지 가능해 학생 입장에서 참여 동기를 만들기 좋습니다.</p>
+                </div>
+                <div class="benefit">
+                  <h4>5. 취업 후에도 끝나지 않습니다</h4>
+                  <p>취업 후에도 근속유지 상담, 사후관리, 필요 시 후속 취업전략 점검까지 이어질 수 있어 “취업하고 바로 끝”이 아니라는 장점이 있습니다.</p>
+                </div>
+                <div class="benefit">
+                  <h4>6. 고용보험 이력이 없어도 제도 설명이 가능합니다</h4>
+                  <p>실업급여와 달리 고용보험 가입 이력이 없는 학생도 국민취업지원제도 설명 대상이 될 수 있어, 졸업예정자·미취업 청년 안내에 활용하기 좋습니다.</p>
+                </div>
+              </div>
+
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>학생이 관심 가질 포인트</th>
+                      <th>쉽게 설명하는 방식</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>진로가 막막하다</strong></td>
+                      <td>잡케어, AI 진로상담, 직업심리검사로 “뭘 준비해야 하는지”부터 정리 가능</td>
+                    </tr>
+                    <tr>
+                      <td><strong>이력서·면접이 어렵다</strong></td>
+                      <td>자소서·면접 컨설팅, 구직기술 프로그램, AI면접으로 실전 지원 가능</td>
+                    </tr>
+                    <tr>
+                      <td><strong>스펙이 부족하다</strong></td>
+                      <td>국민내일배움카드, 직업훈련, 미래내일일경험 연계로 보완 가능</td>
+                    </tr>
+                    <tr>
+                      <td><strong>생활비 부담이 있다</strong></td>
+                      <td>유형에 따라 구직촉진수당, 참여수당, 취업성공수당 등을 함께 안내</td>
+                    </tr>
+                    <tr>
+                      <td><strong>취업 후도 걱정된다</strong></td>
+                      <td>근속유지 상담과 사후관리까지 이어진다고 설명</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="callout">
+                <h4>학생 설득 포인트</h4>
+                <p>
+                  학생에게는 “정부 제도”라는 말보다
+                  <strong>‘취업 방향을 정리해주고, 서류·면접을 도와주고, 필요하면 훈련과 일경험까지 붙여주며, 유형에 따라 지원금도 받을 수 있다’</strong>
+                  는 설명이 더 잘 먹힙니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-timing" data-title="언제 연계하면 좋은가" data-sub="고등학교와 대학교가 학생을 언제 안내하면 좋은지 기준을 보기 쉽게 정리했습니다.">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h3>학교는 언제 학생을 연계하면 좋을까요?</h3>
+                <p>참여 가능한 시점을 정확히 알수록 학교 설명이 쉬워집니다</p>
+              </div>
+              <div class="tag">연계 타이밍</div>
+            </div>
+            <div class="section-body">
+              <div class="grid3">
+                <div class="mini-card">
+                  <span class="badge b-blue">고등학생</span>
+                  <h4>2월 졸업예정자: 같은 해 1월 1일부터</h4>
+                  <p>특성화고·마이스터고 3학년 중 취업 목적 교육과정 또는 일반고 특화과정 참여 재학생은 7월 1일부터도 참여 가능하므로, 고3 하반기부터 조기안내가 중요합니다.</p>
+                </div>
+                <div class="mini-card">
+                  <span class="badge b-green">대학생·대학원생</span>
+                  <h4>최종학년 마지막 학기 재학생·휴학생 가능</h4>
+                  <p>2월 졸업예정자는 전년도 7월 1일부터, 8월 졸업예정자는 같은 해 1월 1일부터 가능하므로, 졸업 직전이 아니라 더 이른 시점부터 안내하는 것이 좋습니다.</p>
+                </div>
+                <div class="mini-card">
+                  <span class="badge b-orange">훈련생</span>
+                  <h4>수료 직전 · 수료 직후가 가장 효과적</h4>
+                  <p>훈련만 끝나고 바로 구직이 막히는 시점에 서류·면접·기업연계를 붙일 수 있어 실질적인 취업전환에 도움이 됩니다.</p>
+                </div>
+              </div>
+
+              <div class="callout">
+                <h4>학교용 실전 포인트</h4>
+                <p>
+                  졸업 직전에만 안내하면 늦습니다.
+                  <strong>고3 하반기, 대학 마지막 학기 시작 시점, 훈련 수료 1~2개월 전</strong>부터 안내해야 학생이 상담, 검사, 서류 준비, 훈련·일경험 연계를 할 시간이 생깁니다.
+                </p>
+              </div>
+
+              <details open>
+                <summary>이런 학생이면 우선 연계 권장</summary>
+                <div class="detail-body">
+                  취업 방향이 아직 없는 학생, 준비는 시작했지만 자소서·면접이 막힌 학생, 실무경험이 없는 학생, 졸업은 가까운데 취업 전략이 없는 학생, 훈련 수료 이후 취업전환이 필요한 학생은 우선 안내가 필요합니다.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+
+
+        
+        <div class="panel" id="panel-requirements" data-title="신청 관련 요건" data-sub="소득, 재산, 중위소득, 유형 구분까지 표로 한눈에 보이도록 다시 정리했습니다.">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h3>신청 관련 요건은 표로 보여줘야 가장 이해가 쉽습니다</h3>
+                <p>유관기관 담당자는 먼저 “누가 신청 가능한지”, “1유형과 2유형이 어떻게 다른지”, “소득과 재산 기준이 어느 정도인지”를 빠르게 파악할 수 있어야 합니다.</p>
+              </div>
+              <div class="tag">요건 표 요약</div>
+            </div>
+            <div class="section-body">
+              <div class="metric-row">
+                <div class="metric-card">
+                  <div class="top">공통 기준</div>
+                  <h4>15세~69세 미취업자</h4>
+                  <p>완전 미취업자뿐 아니라, 현재보다 더 나은 일자리로 이직을 원하고 기준에 맞는 불완전 취업자도 참여 가능할 수 있습니다.</p>
+                </div>
+                <div class="metric-card">
+                  <div class="top">핵심 구분</div>
+                  <h4>1유형 / 2유형</h4>
+                  <p>1유형은 구직촉진수당까지 연결되는 유형이고, 2유형은 취업지원서비스 중심으로 더 넓게 안내하기 좋습니다.</p>
+                </div>
+                <div class="metric-card">
+                  <div class="top">학교 안내 포인트</div>
+                  <h4>요건은 상담으로 최종 확인</h4>
+                  <p>유관기관에서는 대략적인 기준만 설명하고, 세부 판정은 상담과 서류 확인으로 진행된다고 안내하면 진입장벽이 낮아집니다.</p>
+                </div>
+              </div>
+
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>공통 신청요건</th>
+                      <th>쉽게 설명하는 기준</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>취업 상태</strong></td>
+                      <td>기본적으로 미취업 상태여야 하며, 기준에 맞는 불완전 취업자는 예외적으로 참여 가능할 수 있습니다.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>연령</strong></td>
+                      <td>신청 시점 기준 <strong>15세 이상 69세 이하</strong></td>
+                    </tr>
+                    <tr>
+                      <td><strong>근로능력·구직의사</strong></td>
+                      <td>취업을 위한 활동이 가능한 상태이고, 실제로 구직의사가 있어야 합니다.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>참여가 어려운 경우</strong></td>
+                      <td>실업급여 수급 중, 직접일자리사업 참여 중, 이미 취업 확정, 구직활동 수당사업 일부 중복 참여 등은 제한될 수 있습니다.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>2026년 기준 중위소득</th>
+                      <th>1인 가구</th>
+                      <th>2인 가구</th>
+                      <th>3인 가구</th>
+                      <th>4인 가구</th>
+                      <th>5인 가구</th>
+                      <th>6인 가구</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>100%</strong></td>
+                      <td>2,564,238원</td>
+                      <td>4,199,292원</td>
+                      <td>5,359,036원</td>
+                      <td>6,494,738원</td>
+                      <td>7,556,719원</td>
+                      <td>8,555,952원</td>
+                    </tr>
+                    <tr>
+                      <td><strong>60%</strong></td>
+                      <td>1,538,543원</td>
+                      <td>2,519,575원</td>
+                      <td>3,215,422원</td>
+                      <td>3,896,843원</td>
+                      <td>4,534,031원</td>
+                      <td>5,133,571원</td>
+                    </tr>
+                    <tr>
+                      <td><strong>120%</strong></td>
+                      <td>3,077,086원</td>
+                      <td>5,039,150원</td>
+                      <td>6,430,843원</td>
+                      <td>7,793,686원</td>
+                      <td>9,068,063원</td>
+                      <td>10,267,142원</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="criteria-note">
+                위 표의 60%·120% 금액은 2026년 기준 중위소득 원금액을 바탕으로 이해하기 쉽게 계산한 값입니다.
+                유관기관에서는 “1유형은 보통 중위소득 60% 이하, 일부 청년은 120% 이하까지도 볼 수 있다” 정도로 먼저 설명하면 이해가 빠릅니다.
+              </div>
+
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>유형</th>
+                      <th>연령</th>
+                      <th>가구소득 기준</th>
+                      <th>가구재산 기준</th>
+                      <th>취업경험</th>
+                      <th>설명 포인트</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Ⅰ유형 요건심사형</strong></td>
+                      <td>15~69세</td>
+                      <td>중위소득 60% 이하</td>
+                      <td>4억원 이하<br>청년은 5억원 이하</td>
+                      <td>최근 2년 이내 100일 또는 800시간 이상</td>
+                      <td>구직촉진수당까지 연결되는 대표 유형</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ⅰ유형 선발형 비경제활동</strong></td>
+                      <td>15~69세</td>
+                      <td>중위소득 60% 이하</td>
+                      <td>4억원 이하</td>
+                      <td>최근 2년 이내 100일 또는 800시간 미만</td>
+                      <td>예산상황과 필요성을 함께 보는 유형</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ⅰ유형 청년특례</strong></td>
+                      <td>15~34세<br>병역 이행 시 최대 3년 가산</td>
+                      <td>중위소득 120% 이하</td>
+                      <td>5억원 이하</td>
+                      <td>선발 시 고려</td>
+                      <td>청년층은 소득 범위를 더 넓게 보는 편</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ⅱ유형 특정계층</strong></td>
+                      <td>15~69세</td>
+                      <td>소득요건 없음</td>
+                      <td>재산요건 없음</td>
+                      <td>무관</td>
+                      <td>취업취약계층 중심으로 안내하기 좋음</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ⅱ유형 청년층</strong></td>
+                      <td>15~34세</td>
+                      <td>소득요건 없음</td>
+                      <td>재산요건 없음</td>
+                      <td>무관</td>
+                      <td>대학생·졸업예정자·미취업 청년 설명에 활용하기 좋음</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Ⅱ유형 중장년층</strong></td>
+                      <td>35~69세</td>
+                      <td>중위소득 100% 이하</td>
+                      <td>재산요건 없음</td>
+                      <td>무관</td>
+                      <td>재취업이 필요한 중장년층 연결에 적합</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>신청 준비</th>
+                      <th>유관기관이 미리 안내하면 좋은 내용</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>기본 서류</strong></td>
+                      <td>취업지원 신청서, 개인정보 제공 동의, 구직등록</td>
+                    </tr>
+                    <tr>
+                      <td><strong>필요 시 추가</strong></td>
+                      <td>가구단위 증빙서류, 특정계층 증빙, 소득·재산·취업경험 확인자료</td>
+                    </tr>
+                    <tr>
+                      <td><strong>학교·기관 설명 포인트</strong></td>
+                      <td>“먼저 상담받으면 참여 가능 여부와 필요한 서류를 같이 확인해준다”라고 설명하면 참여 진입장벽이 낮아집니다.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="callout">
+                <h4>담당자용 쉬운 정리</h4>
+                <p>
+                  유관기관에서는 먼저 <strong>“미취업 상태인지, 구직의사가 있는지, 졸업·수료 시점이 가까운지”</strong>를 보고 연결하고,
+                  이후에는 <strong>1유형은 수당까지 보는 유형, 2유형은 취업지원서비스 중심으로 넓게 보는 유형</strong>이라고 설명하면 이해가 가장 쉽습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="panel" id="panel-process" data-title="진행 흐름과 기간" data-sub="학생과 학교가 함께 이해하기 쉬운 진행 흐름으로 정리했습니다.">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h3>진행 흐름과 기간은 어떻게 되나요?</h3>
+                <p>신청 후 얼마나, 어떻게 관리되는지 한눈에 보기</p>
+              </div>
+              <div class="tag">절차 + 기간</div>
+            </div>
+            <div class="section-body">
+              <div class="timeline">
+                <div class="step">
+                  <strong>① 신청 전 안내 · 상담</strong>
+                  <span class="time">초기 연결 단계</span>
+                  <p>학생 상황 확인, 제도 설명, 필요서류 안내, 참여 가능성 검토</p>
+                </div>
+                <div class="step">
+                  <strong>② 참여신청 · 서류제출</strong>
+                  <span class="time">온·오프라인 가능</span>
+                  <p>신청서, 개인정보 동의, 필요 시 추가서류 제출</p>
+                </div>
+                <div class="step">
+                  <strong>③ 수급자격 심사 · 결정</strong>
+                  <span class="time">2주 ~ 3주</span>
+                  <p>서류 확인과 요건 검토를 거쳐 결과가 안내됩니다.</p>
+                </div>
+                <div class="step">
+                  <strong>④ 취업활동계획(IAP) 수립</strong>
+                  <span class="time">시작 후 1개월 이내</span>
+                  <p>대면상담 최소 3회 이상, 검사·진단 결과를 반영해 계획을 세웁니다.</p>
+                </div>
+                <div class="step">
+                  <strong>⑤ 취업지원서비스 참여</strong>
+                  <span class="time">약 8개월 · 필요시 연장</span>
+                  <p>상담, 컨설팅, 훈련, 일경험, 구직활동지원 프로그램이 본격적으로 운영됩니다.</p>
+                </div>
+                <div class="step">
+                  <strong>⑥ 집중 취업알선</strong>
+                  <span class="time">마지막 3개월</span>
+                  <p>채용정보 제공, 취업알선, 동행면접, 채용연계 강화</p>
+                </div>
+                <div class="step">
+                  <strong>⑦ 사후관리</strong>
+                  <span class="time">원칙 3개월 · 최대 4개월</span>
+                  <p>미취업자 사후관리, 취업 후 적응 상담, 필요 시 연장</p>
+                </div>
+              </div>
+
+              <div class="callout">
+                <h4>학교가 보기 좋은 포인트</h4>
+                <p>
+                  이 화면의 기간 표시는 유관기관이 설명하기 쉽도록 체감 흐름 중심으로 단순화한 버전입니다.
+                  실제 운영은 참여자의 상황과 프로그램 참여 여부에 따라 더 길어질 수 있어,
+                  <strong>준비가 필요한 학생일수록 조금 일찍 연결하는 것이 유리합니다.</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-supporttypes" data-title="1유형 · 2유형 지원금" data-sub="지원금이 한눈에 비교되고, 설명하기 쉽게 표 중심으로 정리한 구간입니다.">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h3>1유형 · 2유형 지원금은 표로 보여줘야 이해가 쉽습니다</h3>
+                <p>금액만 나열하기보다 “누가 받는지, 얼마를 받는지, 어떤 의미가 있는지”를 같이 보여주는 구성이 설명하기 가장 좋습니다.</p>
+              </div>
+              <div class="tag">지원금 비교</div>
+            </div>
+            <div class="section-body">
+              <div class="support-summary">
+                <div class="support-card">
+                  <span class="support-tag b-blue">Ⅰ유형</span>
+                  <h4>구직촉진수당</h4>
+                  <p>구직활동을 하면서 생활부담을 줄여 주는 유형입니다. 기본 월 60만원, 가족수당 포함 시 최대 월 100만원까지 가능합니다.</p>
+                </div>
+                <div class="support-card">
+                  <span class="support-tag b-green">Ⅱ유형</span>
+                  <h4>취업활동비용</h4>
+                  <p>상담과 프로그램 참여를 이어가면서 취업 준비를 완성해 가는 유형입니다. 참여수당과 참여장려수당 중심으로 설명하면 쉽습니다.</p>
+                </div>
+                <div class="support-card">
+                  <span class="support-tag b-purple">공통</span>
+                  <h4>취업성공수당</h4>
+                  <p>일정 요건에 해당하면 취업 후 6개월·12개월 근속 시 받을 수 있어, 단기 취업보다 근속을 유도하는 설명 포인트가 됩니다.</p>
+                </div>
+              </div>
+
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>구분</th>
+                      <th>Ⅰ유형</th>
+                      <th>Ⅱ유형</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>핵심 지원금</strong></td>
+                      <td>구직촉진수당</td>
+                      <td>취업활동계획 수립 참여수당 + 참여장려수당</td>
+                    </tr>
+                    <tr>
+                      <td><strong>대표 금액</strong></td>
+                      <td>월 60만원 + 가족수당 최대 40만원</td>
+                      <td>15만~25만원(1회) + 2만원 × 최대 5회</td>
+                    </tr>
+                    <tr>
+                      <td><strong>지급 방식</strong></td>
+                      <td>최대 6개월, 구직활동 이행을 전제로 지급</td>
+                      <td>상담·알선·프로그램 참여를 이어가게 하는 구조</td>
+                    </tr>
+                    <tr>
+                      <td><strong>설명 포인트</strong></td>
+                      <td>생활안정을 돕는 유형</td>
+                      <td>취업 준비 참여를 지속하게 하는 유형</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Ⅰ유형 세부 내용</th>
+                      <th>내용</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>기본수당</strong></td>
+                      <td>월 60만원</td>
+                    </tr>
+                    <tr>
+                      <td><strong>가족수당</strong></td>
+                      <td>부양가족 1인당 10만원, 월 최대 40만원</td>
+                    </tr>
+                    <tr>
+                      <td><strong>최대 지급액</strong></td>
+                      <td>월 최대 100만원</td>
+                    </tr>
+                    <tr>
+                      <td><strong>지급기간</strong></td>
+                      <td>최대 6개월</td>
+                    </tr>
+                    <tr>
+                      <td><strong>지급기준</strong></td>
+                      <td>1회차는 취업활동계획 수립 완료 시, 2~6회차는 지급주기별 구직활동 이행 시 지급</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Ⅱ유형 세부 내용</th>
+                      <th>내용</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>취업활동계획 수립 참여수당</strong></td>
+                      <td>15만~25만원, 1회</td>
+                    </tr>
+                    <tr>
+                      <td><strong>참여장려수당</strong></td>
+                      <td>1회 2만원, 최대 5회(총 10만원)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>지급조건</strong></td>
+                      <td>고용센터 또는 위탁기관 방문 후 취업상담·알선 등에 적극 참여</td>
+                    </tr>
+                    <tr>
+                      <td><strong>2026 유의사항</strong></td>
+                      <td>훈련참여지원수당은 2026년 신규 신청자부터 폐지</td>
+                    </tr>
+                    <tr>
+                      <td><strong>설명 포인트</strong></td>
+                      <td>금액보다 취업 준비 흐름을 끊기지 않게 하는 데 의미가 큼</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="soft-box">
+                <h4>공통으로 같이 설명하면 좋은 부분</h4>
+                <p>
+                  일정 요건에 해당하는 참여자는 <strong>취업 후 6개월 근속 시 50만원, 12개월 근속 시 100만원</strong>의 취업성공수당도 받을 수 있습니다.
+                  따라서 지원금 설명은 “참여 중 지원금 + 취업 후 인센티브” 구조로 같이 보여주는 것이 가장 이해가 쉽습니다.
+                </p>
+              </div>
+
+              <div class="callout">
+                <h4>학교가 학생에게 이렇게 말하면 쉽습니다</h4>
+                <p>
+                  <strong>1유형은 구직활동을 하면서 생활부담을 줄여주는 유형</strong>이고,
+                  <strong>2유형은 상담과 프로그램 참여를 이어가면서 취업 준비를 완성해 가는 유형</strong>이라고 설명하면 이해가 쉽습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-goodjob" data-title="좋은일자리 강점" data-sub="학생 참여를 실제 취업으로 연결하기 위한 좋은일자리의 강점을 정리했습니다.">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h3>좋은일자리는 학생에게 무엇을 더 해줄 수 있나요?</h3>
+                <p>같은 제도라도 “여기서 하면 더 체계적이다”는 인식을 만드는 부분</p>
+              </div>
+              <div class="tag">좋은일자리 운영 강점</div>
+            </div>
+            <div class="section-body">
+              <div class="benefit-list">
+                <div class="benefit">
+                  <h4>1. AI 기반 진로상담과 잡케어 활용</h4>
+                  <p>학생의 희망직무, 스펙, 자격증, 지역 여건을 기준으로 직무방향을 좁히고 준비과정을 더 구체적으로 설명할 수 있습니다.</p>
+                </div>
+                <div class="benefit">
+                  <h4>2. 자체 집단프로그램 운영</h4>
+                  <p>자소서 집중반, 면접 준비반, 직무 이해 프로그램, 중장년 재취업 프로그램 등으로 혼자 준비하기 어려운 학생·참여자의 속도를 끌어올릴 수 있습니다.</p>
+                </div>
+                <div class="benefit">
+                  <h4>3. 미래내일일경험 등 외부 프로그램 연계</h4>
+                  <p>실무경험이 부족한 학생은 일경험, 훈련이 필요한 학생은 내일배움카드, 빠른 취업이 필요한 학생은 채용정보와 취업알선 중심으로 전략을 다르게 운영할 수 있습니다.</p>
+                </div>
+                <div class="benefit">
+                  <h4>4. 공기업 · 대기업 · 중견기업 지원자 컨설팅</h4>
+                  <p>일반 취업알선뿐 아니라 상향지원을 준비하는 학생에게도 기업분석, 자소서 방향, 면접 포인트를 보다 실무적으로 안내할 수 있습니다.</p>
+                </div>
+                <div class="benefit">
+                  <h4>5. 국민내일배움카드 훈련 선택 상담</h4>
+                  <p>단순 카드 안내가 아니라 실제 취업과 연결될 가능성이 높은 훈련과정을 함께 검토한다는 점이 강점입니다.</p>
+                </div>
+                <div class="benefit">
+                  <h4>6. 취업 후 적응과 근속유지 상담</h4>
+                  <p>첫 취업 이후 이탈하지 않도록 적응 문제, 근속유지, 필요 시 다음 단계 설계까지 이어지는 관리가 가능합니다.</p>
+                </div>
+              </div>
+
+              <div class="callout">
+                <h4>학교에 설명할 때 쓰기 좋은 문장</h4>
+                <p>
+                  좋은일자리는 제도 신청만 도와주는 기관이 아니라,
+                  <strong>학생의 취업 방향 설정부터 서류·면접, 훈련·일경험, 취업알선, 취업 후 적응까지 실제 취업과정 전체를 연결하는 기관</strong>이라고 소개하는 것이 좋습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-company" data-title="기업이 받는 이점" data-sub="학교가 기업연계까지 설명할 수 있도록 공식 장려금 정보를 반영한 구간입니다.">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h3>채용기업이 받는 이점도 함께 설명해야 합니다</h3>
+                <p>학교가 학생 취업을 설득할 때 기업 측 장점까지 알면 연결 논리가 강해집니다</p>
+              </div>
+              <div class="tag">기업 장려금</div>
+            </div>
+            <div class="section-body">
+              <div class="grid2">
+                <div class="mini-card">
+                  <span class="badge b-green">고용촉진장려금</span>
+                  <h4>채용기업은 최대 연 720만원까지 가능</h4>
+                  <p>지원요건에 해당하는 구직자를 신규 고용하고 6개월 이상 유지한 경우, 우선지원대상기업·중견기업은 연 최대 720만원, 대규모기업은 연 최대 360만원까지 지원됩니다.</p>
+                </div>
+                <div class="mini-card">
+                  <span class="badge b-blue">청년일자리도약장려금</span>
+                  <h4>비수도권 청년 채용 시 기업과 청년 모두 이점</h4>
+                  <p>2026년부터 비수도권 우대가 반영되어, 비수도권 기업은 1년간 최대 720만원, 취업 청년은 지역유형에 따라 2년간 최대 480만~720만원까지 받을 수 있습니다.</p>
+                </div>
+              </div>
+
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>기업 입장에서 좋은 점</th>
+                      <th>학교가 설명할 때의 활용법</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>장려금으로 채용부담 완화</strong></td>
+                      <td>“학생을 뽑는 기업도 지원받을 수 있다”는 점을 알려주면 채용설득 포인트가 생깁니다.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>비수도권 청년 채용 우대</strong></td>
+                      <td>울산처럼 비수도권 지역은 기업과 청년 모두에게 유리한 구조를 함께 설명할 수 있습니다.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>학교의 취업연계 설명 강화</strong></td>
+                      <td>학생만 지원받는 것이 아니라 채용기업에도 이점이 있다는 점이 취업상담 때 강한 메시지가 됩니다.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <details open>
+                <summary>학교가 기업지원금까지 같이 말해야 하는 이유</summary>
+                <div class="detail-body">
+                  학교나 학과는 학생에게 “어디에 지원하면 좋을까?”를 설명해야 합니다. 이때 기업지원금까지 알고 있으면 학생에게도, 기업에게도 연결 논리를 더 현실적으로 만들 수 있습니다. 단, 장려금은 기업 요건과 채용 요건을 충족해야 하므로 실제 적용 여부는 운영기관 또는 고용24 기준으로 확인이 필요합니다.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-school" data-title="학교가 얻는 장점" data-sub="학교·대학·훈련기관이 이 제도를 연결할 때의 실제 이점을 정리했습니다.">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h3>학교 · 대학 · 유관기관이 이 제도를 연결하면 좋은 이유</h3>
+                <p>학생 참여 유도뿐 아니라 기관 운영에도 실제 도움이 되는 포인트</p>
+              </div>
+              <div class="tag">기관 입장 장점</div>
+            </div>
+            <div class="section-body">
+              <div class="grid3">
+                <div class="mini-card">
+                  <span class="badge b-blue">후속지원 확보</span>
+                  <h4>미취업자 관리를 외부 체계로 연결할 수 있습니다</h4>
+                  <p>졸업·수료 이후 학교가 직접 관리하기 어려운 학생을 국민취업지원제도 취업지원체계로 넘길 수 있습니다.</p>
+                </div>
+                <div class="mini-card">
+                  <span class="badge b-green">취업준비 보완</span>
+                  <h4>학생의 취업준비도가 올라갑니다</h4>
+                  <p>서류·면접·직무이해·훈련·일경험이 보완되면 학교 입장에서 취업 지원의 완성도가 높아집니다.</p>
+                </div>
+                <div class="mini-card">
+                  <span class="badge b-orange">취업성과 설명력 강화</span>
+                  <h4>“연계 후 실제 취업지원”을 설명할 수 있습니다</h4>
+                  <p>단순 정보제공이 아니라 상담, 훈련연계, 기업연계, 사후관리까지 이어지는 구조를 학교 실적으로 설명하기 좋습니다.</p>
+                </div>
+              </div>
+
+              <div class="callout">
+                <h4>추천 협업 방식</h4>
+                <p>
+                  고3 설명회, 졸업예정자 특강, 학과별 취업간담회, 훈련생 수료 전 설명회, QR 배포, 상담부스 운영 방식이 가장 현실적입니다.
+                  특히 <strong>졸업 직전 몰아서 안내하지 말고, 마지막 학기 초반이나 수료 1~2개월 전부터 조기 안내</strong>하는 것이 효과적입니다.
+                </p>
+              </div>
+
+              <details open>
+                <summary>학교가 학생에게 꼭 같이 말해줘야 하는 문장</summary>
+                <div class="detail-body">
+                  “국민취업지원제도는 졸업하고 나서 알아보는 제도가 아니라, 졸업 전에 준비를 시작해서 취업 가능성을 높이는 제도입니다.” 이 문장이 학생 참여율을 높이는 데 도움이 됩니다.
+                </div>
+              </details>
+              <details>
+                <summary>이런 학생을 우선 안내하세요</summary>
+                <div class="detail-body">
+                  취업 방향이 없는 학생, 자소서·면접 준비가 늦은 학생, 훈련만 받고 취업이 막힌 학생, 공기업·대기업 준비 중인데 전략이 없는 학생, 생활비 부담으로 구직활동이 흔들리는 학생을 우선적으로 안내하는 것이 좋습니다.
+                </div>
+              </details>
+
+              <div class="footer-note">
+                자료 기준: 2026 국민취업지원제도 업무매뉴얼, 고용24 국민취업지원제도·국민내일배움카드·잡케어·고용촉진장려금·청년일자리도약장려금, 청년일경험 포털 공식 안내를 바탕으로 학교·유관기관 이해용으로 재구성한 화면입니다.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" id="panel-contact" data-title="문의 안내" data-sub="센터 정보와 QR만 넣으면 학교 배포용 안내 화면으로 바로 활용할 수 있습니다.">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h3>문의 및 연계 안내</h3>
+                <p>실제 센터 정보만 바꾸면 바로 활용 가능합니다</p>
+              </div>
+              <div class="tag">연락처 입력용</div>
+            </div>
+            <div class="section-body">
+              <div class="contact">
+                <div class="contact-hero">
+                  <h4>좋은일자리 북부센터</h4>
+                  <p>
+                    고등학교·대학교·훈련기관 설명회, 학생 연계 상담, 학과별 취업안내,
+                    훈련생 수료 전 안내, 기관협업 문의를 이 영역에 넣어 사용할 수 있습니다.
+                  </p>
+                </div>
+                <div class="contact-info">
+                  <dl>
+                    <div>
+                      <dt>기관명</dt>
+                      <dd>좋은일자리 북부센터</dd>
+                    </div>
+                    <div>
+                      <dt>문의처</dt>
+                      <dd>000-0000-0000</dd>
+                    </div>
+                    <div>
+                      <dt>카카오채널</dt>
+                      <dd>삽입 예정</dd>
+                    </div>
+                    <div>
+                      <dt>상담신청 링크 / QR</dt>
+                      <dd>삽입 예정</dd>
+                    </div>
+                    <div>
+                      <dt>비고</dt>
+                      <dd>학교·대학·훈련기관 맞춤 설명 가능</dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const navButtons = [...document.querySelectorAll('.nav-btn')];
+    const panels = [...document.querySelectorAll('.panel')];
+    const currentTitle = document.getElementById('currentTitle');
+    const currentSub = document.getElementById('currentSub');
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('backdrop');
+    const menuToggle = document.getElementById('menuToggle');
+    const content = document.querySelector('.content');
+
+    function activatePanel(target){
+      navButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.target === target));
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === 'panel-' + target));
+      const active = document.getElementById('panel-' + target);
+      if(active){
+        currentTitle.textContent = active.dataset.title || '';
+        currentSub.textContent = active.dataset.sub || '';
+      }
+      content.scrollTo({top:0, behavior:'smooth'});
+      if(window.innerWidth <= 940){
+        sidebar.classList.remove('open');
+        backdrop.classList.remove('show');
+      }
+    }
+
+    navButtons.forEach(btn => btn.addEventListener('click', () => activatePanel(btn.dataset.target)));
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.add('open');
+      backdrop.classList.add('show');
+    });
+
+    backdrop.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      backdrop.classList.remove('show');
+    });
+  </script>
+</body>
+</html>
